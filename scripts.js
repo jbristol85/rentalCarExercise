@@ -94,7 +94,7 @@ function addQuantityPrice() {
 }
 function postRenters(customersName, rental){
         var parag = document.createElement("P");
-        var c = document.createTextNode(customersName + " rented the " + rental);
+        var c = document.createTextNode(customersName + " is renting the " + rental);
         parag.appendChild(c);
         document.getElementById("currentRenters").appendChild(parag);
     }
