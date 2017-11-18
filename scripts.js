@@ -55,7 +55,7 @@ var renters = {
 document.getElementById("rentCar").onclick = function() {
     var rental = document.getElementById("carType").value;
     var customersName = document.getElementById("fullName").value;
-    console.log(customersName, rental);
+    // console.log(customersName, rental);
     if (rental != "selection" && customersName != "" && cars.models[cars.carIndex].quantity - cars.models[cars.carIndex].rented > 0) {
         renters.customers.push({
             customer: customersName,
