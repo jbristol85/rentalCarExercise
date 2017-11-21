@@ -1,3 +1,5 @@
+
+
 var cars = {
     businessName: "Josh's Rentals",
     carIndex: 0,
@@ -5,7 +7,7 @@ var cars = {
             name: "Corolla",
             category: "Economy",
             quantity: 24,
-            rented: 21,
+            rented: 24,
             price: 30
         },
         {
@@ -28,7 +30,16 @@ var cars = {
             quantity: 14,
             rented: 12,
             price: 55
+        },
+        {
+            name: "Bentayga",
+            category: "Mid-Sized",
+            quantity: 75,
+            rented: 2,
+            price:1000
+            
         }
+        
     ],
 
        displayEconoCarsInfo: function() {
@@ -56,7 +67,7 @@ document.getElementById("rentCar").onclick = function() {
     var rental = document.getElementById("carType").value;
     var customersName = document.getElementById("fullName").value;
     // console.log(customersName, rental);
-    if (rental != "selection" && customersName != "" && cars.models[cars.carIndex].quantity - cars.models[cars.carIndex].rented > 0) {
+    if (document.getElementById("carType").selectedIndex != 0 && customersName != "" && cars.models[cars.carIndex].quantity - cars.models[cars.carIndex].rented > 0) {
         renters.customers.push({
             customer: customersName,
             carRented: rental
@@ -69,6 +80,11 @@ document.getElementById("rentCar").onclick = function() {
 };
 
 function addCarsMenu() {
+    var x = document.getElementById("carType");
+        var option = document.createElement("option");
+    if (document.getElementById("carType")){
+        x.add(option);
+    }
     cars.models.forEach(function(element) {
         // if(element.quantity - element.rented > 0){
         var x = document.getElementById("carType");
@@ -82,8 +98,8 @@ function addCarsMenu() {
 function addQuantityPrice() {
     var carMenu = document.getElementById("carType");
     carMenu.onchange = function() {
-        cars.carIndex = this.selectedIndex - 1;
-        var selectedCar = this.selectedIndex - 1;
+        cars.carIndex = this.selectedIndex -1;
+        var selectedCar = this.selectedIndex -1;
         var available = (cars.models[selectedCar].quantity - cars.models[selectedCar].rented);
         if (available === 0) {
             document.getElementById("quantityPrice").innerHTML = "I'm sorry, we don't have any " + cars.models[selectedCar].name + "'s available currently.";
